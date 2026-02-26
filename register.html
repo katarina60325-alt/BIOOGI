@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="sr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BIOOGI | Registracija</title>
+    <link rel="stylesheet" href="register.css" />
+  </head>
+  <body class="auth-page">
+    <div class="auth-container">
+      <header>
+        <h1 class="logo">BIOOGI<span>.</span></h1>
+        <p class="subtitle">Kreiraj nalog za personalizovanu ishranu</p>
+      </header>
+
+      <form class="auth-form" id="registerForm">
+        <input
+          type="text"
+          id="username"
+          placeholder="Korisničko ime"
+          class="auth-input"
+          required
+        />
+        <input
+          type="email"
+          id="email"
+          placeholder="E-mail adresa"
+          class="auth-input"
+          required
+        />
+        <input
+          type="password"
+          id="password"
+          placeholder="Lozinka"
+          class="auth-input"
+          required
+        />
+        <div class="input-row" style="display: flex; gap: 10px">
+          <input
+            type="number"
+            id="height"
+            placeholder="Visina (cm)"
+            class="auth-input"
+            required
+            style="width: 50%"
+          />
+          <input
+            type="number"
+            id="weight"
+            placeholder="Težina (kg)"
+            class="auth-input"
+            required
+            style="width: 50%"
+          />
+        </div>
+
+        <button type="submit" id="GlavnoBtn">KREIRAJ PROFIL</button>
+        <button
+          type="button"
+          id="SporednoBtn"
+          onclick="window.location.href = 'login.html'"
+        >
+          VEĆ IMAM NALOG
+        </button>
+      </form>
+
+      <div id="responseMessage"></div>
+
+      <a href="index.html" class="back-link">← Nazad na početnu</a>
+    </div>
+
+    <script>
+      document
+        .getElementById("registerForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const username = document.getElementById("username").value;
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          const resMsg = document.getElementById("responseMessage");
+          const height = document.getElementById("height").value;
+          const weight = document.getElementById("weight").value;
+
+          // U fetch body dodaj ove parametre:
+
+          try {
+            const response = await fetch("http://localhost:3000/register", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                username,
+                email,
+                password,
+                height,
+                weight,
+              }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+              resMsg.style.color = "#a7c987"; // Sekundarna zelena
+              resMsg.innerText = data.message + " Preusmeravanje...";
+              setTimeout(() => {
+                window.location.href = "login.html";
+              }, 2000);
+            } else {
+              resMsg.style.color = "#5c65cf"; // Akcenat plava
+              resMsg.innerText = data.message;
+            }
+          } catch (error) {
+            resMsg.style.color = "red";
+            resMsg.innerText = "Greška: Server nije dostupan.";
+          }
+        });
+    </script>
+  </body>
+</html>

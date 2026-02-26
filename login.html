@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="sr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BIOOGI | Prijava</title>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body class="auth-page">
+    <div class="auth-container">
+      <header>
+        <h1 class="logo">BIOOGI<span>.</span></h1>
+        <p class="subtitle">Dobrodošli nazad! Unesite podatke za pristup.</p>
+      </header>
+
+      <div id="responseMessage"></div>
+
+
+      <form class="auth-form" id="loginForm">
+        <input
+          type="text"
+          id="username"
+          placeholder="Korisničko ime"
+          class="auth-input"
+          required
+        />
+        <input
+          type="password"
+          id="password"
+          placeholder="Lozinka"
+          class="auth-input"
+          required
+        />
+
+        <button type="submit" id="GlavnoBtn">PRIJAVI SE</button>
+        <button
+          type="button"
+          id="SporednoBtn"
+          onclick="window.location.href = 'register.html'"
+        >
+          KREIRAJ NALOG
+        </button>
+      </form>
+
+
+      <a href="index.html" class="back-link">← Nazad na početnu</a>
+    </div>
+
+    <script>
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const username = document.getElementById("username").value;
+          const password = document.getElementById("password").value;
+          const resMsg = document.getElementById("responseMessage");
+
+          function showMessage(text, type) {
+            resMsg.innerText = text;
+            resMsg.className = "visible " + type; 
+          }
+
+          function hideMessage() {
+            resMsg.className = ""; 
+          }
+
+          try {
+            hideMessage();
+
+            const response = await fetch("http://localhost:3000/login", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ username, password }),
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                window.sessionStorage.setItem('loggedInUser', username); 
+                window.location.href = 'index.html';
+            } else {
+              showMessage(data.message, "msg-info"); 
+            }
+          } catch (error) {
+            showMessage("Server nije pokrenut!", "msg-error");
+          }
+        });
+    </script>
+  </body>
+</html>

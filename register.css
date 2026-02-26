@@ -1,0 +1,134 @@
+/* Definicija tvojih boja */
+:root {
+    --bg-color: #fffaea;     /* Topla bela */
+    --accent-color: #5c65cf; /* Plava akcenat */
+    --text-color: #000000;   /* Crna */
+    --secondary-color: #a7c987; /* Zelena žalfija */
+}
+
+/* Osnovni Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* --- Stilovi za Auth Stranice (Login/Register) --- */
+.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    text-align: center;
+}
+
+.logo {
+    font-size: 48px; 
+    font-weight: 800;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.2s ease;
+}
+
+
+.logo span { color: var(--accent-color) !important; }
+
+.logo:hover {
+    color: var(--accent-color);
+}
+
+.logo:hover span { color: var(--text-color) !important; }
+
+
+.subtitle {
+    opacity: 0.7;
+    margin-bottom: 40px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.auth-input {
+    padding: 16px;
+    border-radius: 12px;
+    border: 2px solid var(--secondary-color);
+    background-color: white;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.auth-input:focus {
+    border-color: var(--accent-color);
+}
+
+/* Dugmići */
+#GlavnoBtn {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 16px;
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+#GlavnoBtn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+
+#SporednoBtn {
+    background-color: transparent;
+    color: var(--text-color);
+    padding: 14px;
+    border-radius: 12px;
+    border: 2px solid var(--secondary-color);
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#SporednoBtn:hover {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.back-link {
+    display: block;
+    margin-top: 25px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.back-link:hover {
+    opacity: 1;
+}
+
+/* Poruke od servera */
+#responseMessage {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}

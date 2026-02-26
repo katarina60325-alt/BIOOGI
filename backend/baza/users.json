@@ -1,0 +1,15 @@
+[
+  {
+    "username": "admin",
+    "password": "admin",
+    "email": "admin@bioogi.com"
+  },
+  {
+    "username": "Katarina",
+    "password": "kaca",
+    "email": "kaca@gmal.com",
+    "isPlanVerified": false,
+    "height": 170,
+    "weight": 70
+  }
+]

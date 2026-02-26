@@ -1,0 +1,29 @@
+[
+  {
+    "orderId": "ORD-1772019898163",
+    "customer": "Katarina",
+    "items": [
+      {
+        "id": 1708612345679,
+        "name": "Brownie biceps",
+        "price": "280",
+        "category": "Proteinsko",
+        "description": "Proteinski čoko mus. Ukusan i hranljiv desert koji će zadovoljiti vašu želju za slatkim bez griže savesti.",
+        "imagePath": "/uploads/browniebiceps.jpeg",
+        "cartItemId": 1772019873783
+      },
+      {
+        "id": 1708612345683,
+        "name": "Donut Delts",
+        "price": "490",
+        "category": "Proteinsko",
+        "description": "Proteinske krofnice, box od 12 komada sa ukusima malina&pistać, čoko&lešnik. Savršen izbor za one koji traže ukusan i hranljiv obrok ili užinu.",
+        "imagePath": "/uploads/donutdelts.jpeg",
+        "cartItemId": 1772019880813
+      }
+    ],
+    "total": 770,
+    "date": "25. 2. 2026. 12:44:58",
+    "status": "Na čekanju"
+  }
+]

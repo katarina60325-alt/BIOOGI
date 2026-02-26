@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="sr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BIOOGI | Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="profil.css" />
+    <script src="JS/profil/userIliAdmin.js"></script>
+
+  </head>
+  <body>
+    <nav class="main-nav">
+      <a href="index.html" class="logo">BIOOGI<span>.</span></a>
+      <div class="user-info">
+        <span id="welcomeUser">Ulogovan: ...</span>
+        <button onclick="logout()" class="logout-btn">ODJAVI SE</button>
+      </div>
+    </nav>
+
+    <div class="dashboard-container">
+      
+      <div id="userSection" class="dash-section" style="display: none">
+        <h1>BIOOGI Profil</h1>
+        <div class="stats-grid">
+          
+          <div class="stat-card single">
+            <h3>Status Plana</h3>
+            <span class="stat-value" id="planStatusText">Verifikacija...</span>
+            <p class="stat-desc" id="planDescText">Status: Čeka se provera nutricioniste</p>
+            <div class="status-bar">
+              <div class="progress" id="planProgressBar" style="width: 70%"></div>
+            </div>
+          </div>
+
+          <div id="verifiedDetails" class="stat-card" style="display: none; grid-column: span 2; border-color: var(--secondary-color);">
+            <h3>📋 Tvoj Personalizovani BIOOGI Plan</h3>
+            <div class="plan-info-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+              <div class="info-item">
+                <small>Dodeljen Plan:</small>
+                <h4 id="userAssignedPlan" style="color: var(--accent-color); font-size: 1.4rem">--</h4>
+              </div>
+              <div class="info-item">
+                <small>Dnevni Kalorijski Cilj:</small>
+                <h4 id="userCalories">--</h4>
+              </div>
+            </div>
+            <div style="margin-top: 20px; padding: 15px; background: var(--bg-color); border-radius: 15px;">
+              <strong>💡 Savet Nutricioniste:</strong>
+              <p id="expertComment" style="font-style: italic; font-size: 0.9rem; margin-top: 5px"></p>
+            </div>
+          </div>
+      
+          <div class="stat-card double" id="recommendationCard" style="grid-column: span 2;">
+            <h3>BIOOGI Preporuka</h3>
+            <div id="productDisplay">
+              <span class="stat-value" id="recProductName">Učitavanje...</span>
+              <p class="stat-desc" id="recProductDesc">Tražimo idealan slatkiš za tebe...</p>
+              <div id="recProductPrice" style="font-weight: bold; color: var(--accent-color); margin-bottom: 15px;"></div>
+            </div>
+            <button class="dash-btn" onclick="window.location.href = 'index.html'">Kupi Odmah</button>
+          </div>
+
+          <div class="stat-card single" id="bmiCard">
+            <h3>Tvoja BIOOGI Analiza</h3>
+            <span class="stat-value" id="bmiValue">--</span>
+            <p class="stat-desc" id="bmiStatus">Učitavanje parametara...</p>
+            <div id="userRecommendation" class="recommendation-box" style="background: var(--bg-color); padding: 10px; border-radius: 10px; font-size: 0.9rem; font-weight: bold; color: var(--accent-color);"></div>
+            <div class="status-bar">
+              <div class="progress" id="bmiProgress" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-card" style="margin-top: 30px">
+          <h3>📜 Moje Porudžbine</h3>
+          <div id="userOrdersList" class="orders-container">
+            <p class="stat-desc">Učitavanje porudžbina...</p>
+          </div>
+        </div>
+
+        <div class="admin-card" style="margin-top: 30px">
+          <h3>🛒 Moja Korpa</h3>
+          <ul id="cartList" class="user-list">
+            <p class="stat-desc">Vaša korpa je trenutno prazna.</p>
+          </ul>
+          <div id="cartFooter" style="display: none; border-top: 1px solid #eee; margin-top: 15px; padding-top: 15px;">
+            <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 1.2rem;">
+              <span>Ukupno:</span>
+              <span id="cartTotal">0 RSD</span>
+            </div>
+            <button class="dash-btn" onclick="processCheckout()" style="width: 100%; margin-top: 15px">ZAVRŠI KUPOVINU</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="adminSection" class="dash-section" style="display: none">
+        <h1>Admin & Stručna Kontrola</h1>
+        <div class="admin-grid">
+          <div class="admin-card double">
+            <h3>Upravljanje korisnicima</h3>
+            <ul id="userList"></ul>
+          </div>
+          <div class="admin-card single" style="margin-top: 24px;">
+            <h3>Zahtevi za validaciju</h3>
+            <p class="stat-desc" id="waitingCount">Provera zahteva...</p>
+            <button class="dash-btn" onclick="openValidationModal()">Pregledaj Zahteve</button>
+          </div>
+        </div>
+
+        <div class="admin-card" style="margin-top: 30px">
+          <h3>📦 Sve Porudžbine (Admin)</h3>
+          <div id="adminOrdersList" class="orders-container">
+            <p class="stat-desc">Učitavanje svih porudžbina...</p>
+          </div>
+        </div>
+
+        <div class="admin-card" id="addProductSection" style="display: none; margin-top: 30px">
+          <h3>Dodaj Novi BIOOGI Proizvod</h3>
+          <form id="productForm">
+            <input type="text" id="pName" placeholder="Naziv proizvoda" class="auth-input" required />
+            <input type="number" id="pPrice" placeholder="Cena (RSD)" class="auth-input" required />
+            <div class="file-input-wrapper" onclick="document.getElementById('pImage').click()">
+              <span class="file-label">📸 Klikni da dodaš sliku proizvoda</span>
+              <input type="file" id="pImage" accept="image/*" style="display: none" required />
+              <center><img id="imagePreview" src="" alt="Pregled slike" /></center>
+            </div>
+            <select id="pCategory" class="auth-input">
+              <option value="Proteinsko">Proteinsko</option>
+              <option value="Bez Šećera">Bez Šećera</option>
+              <option value="Vegan">Vegan</option>
+            </select>
+            <textarea id="pDesc" placeholder="Opis proizvoda..." class="auth-input" style="height: 80px; resize: none"></textarea>
+            <button type="submit" id="GlavnoBtn">SAČUVAJ PROIZVOD</button>
+          </form>
+          <p id="productMsg" style="margin-top: 10px; font-weight: bold"></p>
+        </div>
+      </div>
+    </div>
+
+    <div id="validationModal" class="modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px);">
+      <div class="modal-content" style="background: white; margin: 10% auto; padding: 30px; border-radius: 30px; width: 60%; max-height: 70vh; overflow-y: auto; border: 3px solid var(--accent-color);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <h2 style="color: var(--accent-color)">Zahtevi za validaciju plana</h2>
+          <span onclick="closeModal()" style="cursor: pointer; font-size: 28px; font-weight: bold">&times;</span>
+        </div>
+        <ul id="waitingList" style="list-style: none; padding: 0"></ul>
+      </div>
+    </div>
+
+    <div id="deleteModal" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-icon">⚠️</div>
+        <h2>Brisanje korisnika</h2>
+        <p>Da li ste sigurni da želite da obrišete korisnika <b id="modalUsername"></b>?</p>
+        <div class="modal-actions">
+          <button onclick="closeDeleteModal()" class="modal-btn cancel">Odustani</button>
+          <button id="confirmDeleteBtn" class="modal-btn confirm">Obriši</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="JS/profil/analizaKorisnika.js"></script>
+    <script src="JS/profil/adminFunkcije.js"></script>
+    <script src="JS/profil/korpaIPorudzbine.js"></script>
+
+  </body>
+</html>

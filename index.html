@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOOGI | Zdravi Slatkiši & Fitnes</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="JS/index/loginProvera.js" defer></script>
+    <script src="JS/index/kupovinaProizvoda.js" defer></script>
+    <script src="JS/index/izmenaProizvoda.js" defer></script>
+</head>
+<body>
+
+    <nav class="main-nav">
+        <a class="logo" href="/">BIOOGI<span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="#proizvodi">Slatkiši</a></li>
+            <li><a href="#usluge">Planovi</a></li>
+            <li><a href="login.html" class="nav-btn">Prijava</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-text">
+            <h1>Slatkiši koji prate tvoj <span>ritam.</span></h1>
+            <p>Spoj domaće proizvodnje i pametne ishrane. BIOOGI ti pomaže da uživaš bez griže savesti.</p>
+            <div class="hero-action">
+                <a href="#proizvodi" class="btn-main">Kupi Slatkiše</a>
+                <a href="#usluge" class="btn-alt">Pogledaj Planove</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="proizvodi" class="section-container">
+        <h2 class="section-title">Naši Najprodavaniji Proizvodi</h2>
+        <div class="grid">
+            </div>
+    </section>
+
+        <section id="usluge" class="ai-section">
+        <div class="ai-content">
+            <h2>AI Personalizacija Ishrane</h2>
+            <p>Naša platforma koristi napredne algoritme da izračuna tvoje potrebe i preporuči idealan BIOOGI paket.</p>
+            <button class="btn-main">Pokreni Analizu</button>
+        </div>
+    </section>
+
+
+    <div id="editProductModal" class="modal-overlay">
+      <div class="modal-content">
+        <h2>Izmeni proizvod</h2>
+        <form id="editProductForm">
+          <input type="hidden" id="editPId">
+          <label>Naziv proizvoda:</label>
+          <input type="text" id="editPName" class="auth-input" required>
+          <label>Cena (RSD):</label>
+          <input type="number" id="editPPrice" class="auth-input" required>
+          <label>Kategorija:</label>
+          <select id="editPCategory" class="auth-input">
+              <option value="Proteinsko">Proteinsko</option>
+              <option value="Bez Šećera">Bez Šećera</option>
+              <option value="Vegan">Vegan</option>
+          </select>
+          <label>Opis:</label>
+          <textarea id="editPDesc" class="auth-input" style="height: 80px; resize: none;"></textarea>
+          <div class="modal-actions">
+            <button type="button" onclick="closeEditModal()" class="modal-btn cancel">Odustani</button>
+            <button type="submit" class="modal-btn confirm">Sačuvaj izmene</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+/* Nova paleta boja */
+:root {
+    --bg-color: #fffaea;     /* Topla bela */
+    --accent-color: #5c65cf; /* Plava */
+    --text-color: #000000;   /* Crna */
+    --secondary-color: #a7c987; /* Zelena */
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 380px;
+    padding: 40px;
+    text-align: center;
+}
+
+.logo {
+    font-size: 48px; 
+    font-weight: 800;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.2s ease;
+}
+
+
+.logo span { color: var(--accent-color) !important; }
+
+.logo:hover {
+    color: var(--accent-color);
+}
+
+.logo:hover span { color: var(--text-color) !important; }
+
+
+.subtitle {
+    color: var(--text-color);
+    opacity: 0.7;
+    margin-bottom: 40px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Input polja koriste sekundarnu zelenu boju za border ili lagani bg */
+.auth-input {
+    padding: 16px;
+    border-radius: 12px;
+    border: 2px solid var(--secondary-color);
+    background-color: white;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.auth-input:focus {
+    border-color: var(--accent-color);
+}
+
+/* Glavno dugme - Akcenat plava */
+#GlavnoBtn {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 16px;
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+#GlavnoBtn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+
+/* Sporedno dugme - Outline sa sekundarnom bojom */
+#SporednoBtn {
+    background-color: transparent;
+    color: var(--text-color);
+    padding: 14px;
+    border-radius: 12px;
+    border: 2px solid var(--secondary-color);
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#SporednoBtn:hover {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.back-link {
+    display: block;
+    margin-top: 25px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.back-link:hover {
+    opacity: 1;
+}
+
+#responseMessage {
+    margin: 20px 0;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    display: none; /* Sakriveno dok se ne desi akcija */
+    transition: all 0.3s ease;
+    
+}
+
+/* Kada je poruka vidljiva */
+#responseMessage.visible {
+    display: block;
+    animation: fadeIn 0.4s ease-in-out;
+}
+/* Tipovi poruka */
+.msg-error {
+    background-color: #fff0f0;
+    color: #d32f2f;
+    border-left: 5px solid #d32f2f;
+}
+
+.msg-info {
+    background-color: #f0f1ff;
+    color: var(--accent-color); /* Tvoja plava #5c65cf */
+    border-left: 5px solid var(--accent-color);
+}
+.msg-success {
+    background-color: #f6fff0;
+    color: #388e3c;
+    border-left: 5px solid var(--secondary-color); /* Tvoja zelena #a7c987 */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
