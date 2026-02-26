@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1708612345678,
+    "name": "Bicep berryaa",
+    "price": "350",
+    "category": "Bez Šećera",
+    "description": "Proteinske malina i pistanac kuglice. Savršena užina za sportiste i one koji vode računa o ishrani.a",
+    "imagePath": "/uploads/bicepberry.jpeg"
+  },
+  {
+    "id": 1708612345679,
+    "name": "Brownie biceps",
+    "price": "280",
+    "category": "Proteinsko",
+    "description": "Proteinski čoko mus. Ukusan i hranljiv desert koji će zadovoljiti vašu želju za slatkim bez griže savesti.",
+    "imagePath": "/uploads/browniebiceps.jpeg"
+  },
+  {
+    "id": 1708612345680,
+    "name": "Chocolate Chest",
+    "price": "220",
+    "category": "Vegan",
+    "description": "Proteinski čoko čizkejk. Savršen izbor za vegane koji traže ukusan i hranljiv obrok ili užinu.",
+    "imagePath": "/uploads/chocochest.jpeg"
+  },
+  {
+    "id": 1708612345681,
+    "name": "Chocolate Gluteus",
+    "price": "420",
+    "category": "Proteinsko",
+    "description": "Čoko kuglice sa dodatkom proteina. Ukusan i hranljiv obrok ili užina za one koji žele da održe formu i uživaju u slatkom.",
+    "imagePath": "/uploads/chocolategluteus.jpeg"
+  },
+  {
+    "id": 1708612345682,
+    "name": "Core Cheescake",
+    "price": "310",
+    "category": "Proteinsko",
+    "description": "Proteinski čizkejk od maline, savršen izbor za one koji traže ukusan i hranljiv obrok ili užinu.",
+    "imagePath": "/uploads/corecheesecake.jpeg"
+  },
+  {
+    "id": 1708612345683,
+    "name": "Donut Delts",
+    "price": "490",
+    "category": "Proteinsko",
+    "description": "Proteinske krofnice, box od 12 komada sa ukusima malina&pistać, čoko&lešnik. Savršen izbor za one koji traže ukusan i hranljiv obrok ili užinu.",
+    "imagePath": "/uploads/donutdelts.jpeg"
+  },
+  {
+    "id": 1708612345684,
+    "name": "Pistachio Quadsa",
+    "price": "310",
+    "category": "Vegan",
+    "description": "Proteinski brauni sa ukusom jagode i pistaća, savršen izbor za vegane koji traže ukusan i hranljiv obrok ili užinu.",
+    "imagePath": "/uploads/pistachioquads.jpeg"
+  }
+]
